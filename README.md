@@ -19,13 +19,13 @@ Power BI • SQL • Python • Apache Airflow • DAX • Power Query • APIs 
 | Case | Status |
 |------|--------|
 | 🚧 Executive Governance for SAP Implementation | In Progress |
-| 🚧 SAP Cloud ALM Analytics | In Progress |
-| 🚧 SAP License Governance | In Progress |
-| 🚧 Jira Service Desk Analytics | In Progress |
-| 🚧 Zabbix Infrastructure Monitoring | In Progress |
-| 🚧 Bitdefender Security Analytics | In Progress |
-| 🚧 Salesforce B2B Analytics | In Progress |
-| 🚧 Beauty Studio Financial Analytics | In Progress |
+| 🚧 SAP Cloud ALM Analytics | Coming Soon |
+| 🚧 SAP License Governance | Coming Soon |
+| 🚧 Jira Service Desk Analytics | Coming Soon |
+| 🚧 Zabbix Infrastructure Monitoring | Coming Soon |
+| 🚧 Bitdefender Security Analytics | Coming Soon |
+| 🚧 Salesforce B2B Analytics | Coming Soon |
+| 🚧 Beauty Studio Financial Analytics | Coming Soon |
 
 ---
 
