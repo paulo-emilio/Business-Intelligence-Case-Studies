@@ -16,6 +16,8 @@ Power BI • SQL • Python • Apache Airflow • DAX • Power Query • APIs 
 
 # Professional Case Studies
 
+These case studies showcase how Business Intelligence can be used to solve real business challenges through dashboards, automation, data integration and analytics. Rather than focusing on tools alone, each case demonstrates the business context, technical solution and outcomes achieved.
+
 | Case | Status |
 |------|--------|
 | 🚧 Executive Governance for SAP Implementation | In Progress |
