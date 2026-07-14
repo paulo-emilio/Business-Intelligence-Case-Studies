@@ -2,9 +2,9 @@
 
 # Governança Executiva da Implantação SAP
 
-### Business Intelligence Case Study
+### Enterprise Business Intelligence Case Study
 
-> Como automatizei a governança de um projeto SAP utilizando Power BI, Python e Microsoft Project.
+> Como automatizei a governança de uma implantação SAP utilizando Power BI, Python e Microsoft Project.
 
 <img src="imgs/banner.png" width="100%">
 
@@ -21,13 +21,13 @@
 
 # 📌 Visão Geral
 
-Durante a implantação do SAP na CostaFoods Brasil, o acompanhamento executivo do projeto era realizado de forma predominantemente manual.
+Implantações SAP envolvem centenas de atividades, múltiplas equipes, fornecedores, cronogramas complexos e um grande volume de informações distribuídas entre diferentes ferramentas.
 
-Os PMOs exportavam informações do Microsoft Project para Excel, consolidavam diversos arquivos manualmente e preparavam apresentações em PowerPoint para cada reunião com gerentes e diretoria.
+Nesse projeto, o acompanhamento executivo era realizado por meio de exportações manuais do Microsoft Project para Excel, consolidação de planilhas e preparação de apresentações para reuniões de acompanhamento.
 
-O processo demandava muito tempo, dificultava o acompanhamento em tempo real e tornava a atualização das informações repetitiva.
+Além do alto esforço operacional, qualquer atualização exigia repetir praticamente todo o processo.
 
-Para resolver esse cenário, desenvolvi uma plataforma analítica responsável por automatizar a coleta dos dados, manter um histórico consolidado e disponibilizar dashboards executivos para acompanhamento completo da implantação.
+Para resolver esse cenário, desenvolvi uma plataforma analítica capaz de automatizar a coleta dos dados, consolidar um histórico da implantação e disponibilizar dashboards executivos para acompanhamento em tempo real.
 
 <br>
 
@@ -37,29 +37,29 @@ Para resolver esse cenário, desenvolvi uma plataforma analítica responsável p
 
 # 🎯 O Desafio
 
-A implantação envolvia centenas de atividades distribuídas entre diversas frentes, consultorias e fornecedores.
-
-Os principais desafios eram:
+Os principais desafios encontrados eram:
 
 - Atualização manual dos Status Reports;
 - Consolidação de diversas planilhas;
-- Alto tempo gasto na preparação das reuniões executivas;
-- Pouca visibilidade sobre riscos e capacidade das equipes;
+- Elevado tempo de preparação das reuniões executivas;
+- Pouca visibilidade sobre cronograma, riscos e capacidade das equipes;
 - Ausência de histórico consolidado;
-- Processo totalmente dependente de trabalho manual.
+- Processo altamente dependente de trabalho manual.
 
 ---
 
 # 💡 A Solução
 
-Foi desenvolvida uma plataforma completa de Business Intelligence composta por:
+Foi desenvolvida uma solução completa de Business Intelligence composta por:
 
 - Dashboards executivos em Power BI;
 - Automações em Python;
-- Consolidação automática dos dados;
-- Histórico da implantação;
-- Indicadores estratégicos;
-- Acompanhamento em tempo real da evolução do projeto.
+- Consolidação automática das informações;
+- Histórico completo da implantação;
+- Indicadores estratégicos para tomada de decisão;
+- Atualização contínua dos dados.
+
+Todo o processo passou a ser centralizado em um único ambiente analítico.
 
 ---
 
@@ -67,39 +67,46 @@ Foi desenvolvida uma plataforma completa de Business Intelligence composta por:
 
 <img src="imgs/arquitetura_da_solucao.png" width="100%">
 
+A arquitetura foi construída para automatizar todo o fluxo entre a origem dos dados e a camada analítica, reduzindo atividades manuais e aumentando a confiabilidade das informações.
+
 ---
 
 # ⚙️ Automação
 
-Como não havia integração direta entre Microsoft Project e Power BI, desenvolvi uma automação responsável por:
+Como não havia integração nativa entre Microsoft Project e Power BI, desenvolvi uma automação em Python responsável por:
 
-- baixar automaticamente os arquivos do Microsoft Project;
-- consolidar todas as informações;
-- atualizar a base histórica;
+- realizar o download automático dos arquivos;
+- consolidar todas as informações em uma base única;
+- manter um histórico completo da implantação;
 - gerar backups automáticos;
-- alimentar os dashboards executivos.
+- atualizar a base utilizada pelos dashboards.
 
 <img src="imgs/automacao.png" width="100%">
+
+### Bibliotecas utilizadas
+
+- **pandas** — tratamento e consolidação dos dados;
+- **openpyxl** — manipulação dos arquivos Excel;
+- **pathlib** — organização da estrutura de diretórios;
+- **shutil** — geração automática de backups;
+- **os** — gerenciamento de arquivos;
+- **datetime** — versionamento dos históricos.
 
 ---
 
 # 👨‍💻 Minha Atuação
 
-Durante aproximadamente um ano fui responsável pela camada analítica do projeto.
+Durante aproximadamente um ano fui responsável pela camada analítica da implantação.
 
-### Levantamento de requisitos
+Principais responsabilidades:
 
-- Definição dos indicadores junto aos PMOs e GMOs;
-- Entendimento das necessidades das áreas;
-- Evolução contínua dos dashboards.
-
-### Desenvolvimento
-
+- Levantamento de requisitos junto às equipes do projeto;
+- Definição de indicadores executivos;
 - Modelagem dos dados;
 - Desenvolvimento dos dashboards em Power BI;
 - Desenvolvimento das automações em Python;
 - Consolidação da base histórica;
-- Publicação e manutenção dos relatórios.
+- Publicação e evolução contínua das soluções analíticas.
 
 ---
 
@@ -107,7 +114,7 @@ Durante aproximadamente um ano fui responsável pela camada analítica do projet
 
 ## Status Geral
 
-Dashboard executivo utilizado para acompanhamento da evolução da implantação, consolidando indicadores estratégicos como progresso geral, SPI, curva S e desempenho por fornecedor.
+Dashboard executivo utilizado para acompanhamento da evolução da implantação, consolidando indicadores estratégicos como progresso do projeto, Curva S, SPI e desempenho por fornecedor.
 
 <img src="imgs/statusgeral.png" width="100%">
 
@@ -115,7 +122,7 @@ Dashboard executivo utilizado para acompanhamento da evolução da implantação
 
 ## Capacity
 
-Painel responsável por monitorar a capacidade das equipes, distribuição de horas e possíveis sobrecargas dos recursos envolvidos no projeto.
+Painel responsável pelo acompanhamento da capacidade das equipes, distribuição de horas, disponibilidade dos recursos e identificação de possíveis sobrecargas.
 
 <img src="imgs/capacity.png" width="100%">
 
@@ -123,7 +130,7 @@ Painel responsável por monitorar a capacidade das equipes, distribuição de ho
 
 ## Cutover
 
-Dashboard desenvolvido para acompanhar a fase crítica de Cutover, monitorando atividades concluídas, pendências, indicadores de desempenho e tarefas prioritárias.
+Dashboard utilizado durante a fase crítica de Cutover para acompanhar atividades concluídas, pendências, prioridades e evolução da entrada em produção.
 
 <img src="imgs/cutover.png" width="100%">
 
@@ -131,43 +138,78 @@ Dashboard desenvolvido para acompanhar a fase crítica de Cutover, monitorando a
 
 ## Book de Riscos
 
-Painel executivo para acompanhamento dos riscos da implantação, permitindo análise por impacto, probabilidade, responsáveis, fornecedores e plano de ação.
+Painel executivo para acompanhamento dos riscos do projeto, permitindo análises por impacto, probabilidade, responsáveis e planos de ação.
 
 <img src="imgs/riscos.png" width="100%">
 
 ---
 
-# 📈 Resultado
+# 📦 Entregáveis
+
+Ao final do projeto foram entregues:
+
+- Plataforma analítica em Power BI;
+- Processo automatizado de atualização dos dados;
+- Base histórica da implantação;
+- Dashboards executivos;
+- Dashboard de Capacity;
+- Dashboard de Cutover;
+- Dashboard de Riscos;
+- Indicadores para acompanhamento executivo.
+
+---
+
+# 📈 Resultados
 
 A solução passou a fornecer uma visão única e consolidada da implantação.
 
-Entre os principais ganhos obtidos:
+Principais ganhos obtidos:
 
-- Eliminação da consolidação manual das informações;
+- Redução significativa das atividades manuais;
 - Atualização automatizada dos dashboards;
-- Criação de histórico da implantação;
-- Redução significativa do tempo de preparação das reuniões executivas;
-- Maior visibilidade para PMOs, GMOs, gerentes e diretoria;
-- Melhor acompanhamento de cronograma, riscos, capacidade e evolução do projeto.
+- Criação de uma base histórica da implantação;
+- Redução do tempo de preparação das reuniões executivas;
+- Maior visibilidade para gestores e liderança;
+- Centralização das informações do projeto;
+- Apoio mais ágil à tomada de decisão.
 
 ---
 
 # 🛠 Stack Tecnológica
 
+### Business Intelligence
+
 - Power BI
-- Python
-- Microsoft Project
-- Excel
 - DAX
 - Power Query
+
+### Linguagem
+
+- Python
+
+### Bibliotecas Python
+
+- pandas
+- openpyxl
+- pathlib
+- shutil
+- os
+- datetime
+
+### Ferramentas
+
+- Microsoft Project
+- Excel
 
 ---
 
 # 📚 Principais Aprendizados
 
-Este projeto reforçou que Business Intelligence vai muito além da criação de dashboards.
+Este projeto reforçou que Business Intelligence vai muito além da construção de dashboards.
 
-Grande parte do valor entregue esteve na automação dos processos, organização dos dados e transformação de informações dispersas em indicadores confiáveis para apoiar decisões estratégicas.
+Grande parte do valor entregue esteve na automação dos processos, organização das informações e estruturação de uma camada analítica capaz de transformar dados dispersos em indicadores confiáveis para apoiar decisões estratégicas.
+
+Mais do que desenvolver relatórios, o desafio foi construir uma solução capaz de reduzir esforço operacional, aumentar a visibilidade da implantação e tornar o acompanhamento executivo muito mais eficiente.
 
 ---
 
@@ -175,7 +217,7 @@ Grande parte do valor entregue esteve na automação dos processos, organizaçã
 
 Este estudo de caso foi adaptado para fins de portfólio.
 
-Todos os dashboards utilizam dados anonimizados para preservar a confidencialidade do projeto original e das informações da empresa.
+Alguns detalhes operacionais foram abstraídos e todos os dados apresentados são ilustrativos ou anonimizados para preservar a confidencialidade do projeto original.
 
 ---
 
@@ -183,7 +225,7 @@ Todos os dashboards utilizam dados anonimizados para preservar a confidencialida
 
 **Paulo Oliveira**
 
-Analista de BI | Analytics
+### Data Solutions • Analytics • AI
 
 - LinkedIn: https://www.linkedin.com/in/paulo-emilio
 - Portfólio: https://paulo-emilio.github.io
