@@ -1,544 +1,214 @@
-# <p align="center">
+# Otimização de Custos de Licenciamento ERP
 
-# 
+<p align="center">
+  <img src="imgs/banner.png" alt="Banner do Projeto">
+</p>
 
-# \# Otimização de Custos de Licenciamento ERP
+## Visão Geral
 
-# 
+Este projeto apresenta uma solução analítica desenvolvida para identificar oportunidades de otimização de custos com licenciamento de um sistema ERP, transformando grandes volumes de dados operacionais em informações estratégicas para apoio à tomada de decisão.
 
-# \### Enterprise Analytics Case Study
+A solução foi construída utilizando pipelines de dados, processamento automatizado e dashboards analíticos para permitir uma visão completa dos custos de licenciamento, identificar usuários com potencial de reclassificação e priorizar oportunidades de redução de despesas.
 
-# 
+---
 
-# > Como uma plataforma analítica transformou dados de licenciamento em oportunidades de redução de custos.
+<p align="center">
+  <img src="imgs/visao-geral.png" alt="Visão Geral da Solução">
+</p>
 
-# 
+---
 
-# <img src="imgs/banner.png" width="100%">
+# O Desafio
 
-# 
+O ambiente possuía milhares de usuários distribuídos entre diversas áreas da empresa, cada um podendo possuir múltiplos perfis e diferentes níveis de acesso.
 
-# <br>
+O principal desafio era identificar, de forma escalável, quais usuários realmente necessitavam de licenças de maior custo e quais poderiam ser reclassificados sem impacto operacional.
 
-# 
+Antes da solução, essa análise era altamente manual, dificultando a identificação de oportunidades de economia e tornando o processo lento e sujeito a erros.
 
-# !\[Power BI](https://img.shields.io/badge/Power\_BI-F2C811?style=for-the-badge\&logo=powerbi\&logoColor=black)
+---
 
-# !\[SQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge)
+# Arquitetura da Solução
 
-# !\[Apache Airflow](https://img.shields.io/badge/Apache\_Airflow-017CEE?style=for-the-badge\&logo=apacheairflow\&logoColor=white)
+<p align="center">
+  <img src="imgs/arquitetura.png" alt="Arquitetura da Solução">
+</p>
 
-# !\[PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge\&logo=postgresql\&logoColor=white)
+A arquitetura foi construída para transformar dados operacionais do ERP em informações analíticas consumidas pelo Power BI.
 
-# !\[MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge\&logo=mysql\&logoColor=white)
+O fluxo da solução contemplava:
 
-# 
+- Extração de dados relacionados a usuários, perfis, licenças e acessos;
+- Consultas SQL utilizando CTEs para consolidação e tratamento das informações;
+- Orquestração das cargas por meio do Apache Airflow;
+- Organização dos dados em camadas Silver e Gold;
+- Publicação em ambiente analítico para consumo pelo Power BI.
 
-# </p>
+Essa estrutura permitia atualizações recorrentes, padronização das informações e suporte às análises estratégicas.
 
-# 
+---
 
-# \---
+# Dashboards
 
-# 
+## Dashboard Executivo
 
-# \# 📌 Visão Geral
+<p align="center">
+  <img src="imgs/dash-executivo.png" alt="Dashboard Executivo">
+</p>
 
-# 
+O dashboard executivo consolidava os principais indicadores relacionados aos custos de licenciamento, permitindo uma visão geral do cenário da organização.
 
-# Licenças de ERP representam um dos custos recorrentes mais relevantes da área de Tecnologia.
+Principais análises:
 
-# 
+- custo total de licenciamento;
+- distribuição das licenças;
+- custos por área;
+- evolução dos gastos;
+- usuários com maior impacto financeiro;
+- potencial estimado de economia.
 
-# Apesar disso, muitas organizações possuem pouca visibilidade sobre quem realmente utiliza cada tipo de licença, quais funcionalidades justificam licenças premium e onde existem oportunidades reais de otimização.
+---
 
-# 
+## Dashboard de Oportunidades
 
-# Neste projeto foi desenvolvida uma plataforma analítica capaz de consolidar dados de usuários, perfis, acessos e licenças do ERP, permitindo identificar oportunidades de redução de custos de forma objetiva e baseada em dados.
+<p align="center">
+  <img src="imgs/dash-oportunidades.png" alt="Dashboard de Oportunidades">
+</p>
 
-# 
+Após identificar as áreas com maior concentração de custos, a solução priorizava automaticamente as melhores oportunidades de redução.
 
-# <br>
+A análise combinava fatores como:
 
-# 
+- impacto financeiro;
+- facilidade de implementação;
+- quantidade de funcionalidades utilizadas;
+- quantidade de funcionalidades críticas;
+- potencial de economia.
 
-# <img src="imgs/visao\_geral\_dashboards.png" width="100%">
+Essa abordagem permitia priorizar ações de maior retorno com menor esforço operacional.
 
-# 
+---
 
-# \---
+## Dashboard de Perfis e Transações
 
-# 
+<p align="center">
+  <img src="imgs/dash-analise-licencas.png" alt="Dashboard de Perfis e Transações">
+</p>
 
-# \# 🎯 O Desafio
+Este dashboard permitia navegar do nível mais alto da análise até o detalhe das transações responsáveis pelo enquadramento de cada licença.
 
-# 
+Fluxo analítico:
 
-# As informações necessárias para análise estavam distribuídas entre diferentes tabelas do ERP.
+Área
 
-# 
+↓
 
-# A identificação de oportunidades exigia consultas manuais e cruzamento de diversos conjuntos de dados, tornando praticamente inviável uma análise recorrente.
+Usuário
 
-# 
+↓
 
-# Os principais desafios eram:
+Perfil (Role)
 
-# 
+↓
 
-# \- Baixa visibilidade sobre o uso das licenças;
+Transações
 
-# \- Dados distribuídos em diversas tabelas;
+↓
 
-# \- Ausência de uma visão consolidada;
+Nível da Licença
 
-# \- Dificuldade para identificar licenças superdimensionadas;
+↓
 
-# \- Pouco conhecimento sobre quais funcionalidades elevavam o custo de cada usuário.
+Oportunidade de Redução
 
-# 
+Essa visão facilitava a identificação de casos onde poucas transações elevavam o custo da licença, possibilitando revisões mais precisas e fundamentadas.
 
-# \---
+---
 
-# 
+# Tecnologias Utilizadas
 
-# \# 💡 A Solução
+### Business Intelligence
 
-# 
+- Power BI
 
-# Foi desenvolvida uma plataforma analítica composta por:
+### Engenharia de Dados
 
-# 
+- SQL
+- Apache Airflow
 
-# \- consultas SQL utilizando CTEs;
+### Modelagem de Dados
 
-# \- pipelines de dados com Apache Airflow;
+- Camadas Silver
+- Camadas Gold
+- Data Lake
+- Data Warehouse
+- Data Mart
 
-# \- arquitetura em camadas (Silver → Gold);
+### Bancos de Dados
 
-# \- Data Lake em PostgreSQL;
+- PostgreSQL
+- MySQL
 
-# \- DataMart em MySQL;
+### Conceitos Aplicados
 
-# \- dashboards executivos em Power BI.
+- ETL
+- ELT
+- Data Warehouse
+- Governança de Dados
+- Data Analytics
+- Modelagem Dimensional
+- Análise de Custos
+- Business Intelligence
 
-# 
+---
 
-# A solução consolidou automaticamente todas as informações necessárias para análise de custos.
+# Resultados
 
-# 
+A solução proporcionou uma visão centralizada do ambiente de licenciamento, permitindo identificar oportunidades de otimização que antes demandavam análises manuais.
 
-# \---
+Entre os principais ganhos obtidos destacam-se:
 
-# 
+- centralização das informações de licenciamento;
+- atualização automatizada dos dados;
+- identificação de usuários com potencial de reclassificação;
+- priorização das melhores oportunidades de economia;
+- maior suporte às decisões relacionadas à gestão de licenças;
+- fortalecimento da governança sobre acessos e custos.
 
-# \# 🏗 Arquitetura da Solução
+---
 
-# 
+# Principais Aprendizados
 
-# <img src="imgs/arquitetura\_da\_solucao.png" width="100%">
+Durante o desenvolvimento deste projeto foi possível aprofundar conhecimentos em:
 
-# 
+- arquitetura analítica para Business Intelligence;
+- construção de consultas SQL complexas utilizando CTEs;
+- modelagem de dados para ambientes analíticos;
+- orquestração de pipelines com Apache Airflow;
+- criação de dashboards executivos focados em tomada de decisão;
+- análise de custos baseada em dados;
+- comunicação de insights para áreas de negócio.
 
-# A arquitetura foi estruturada em múltiplas camadas para facilitar manutenção, escalabilidade e reutilização dos dados.
+---
 
-# 
+# Confidencialidade
 
-# Fluxo da solução:
+Este case foi adaptado para fins de portfólio.
 
-# 
+Todas as informações sensíveis foram anonimizadas, incluindo nomes de usuários, áreas, estruturas organizacionais, valores específicos e demais dados confidenciais.
 
-# ERP
+O objetivo deste projeto é demonstrar a arquitetura da solução, a abordagem analítica utilizada e as técnicas aplicadas durante seu desenvolvimento, preservando integralmente a confidencialidade do ambiente corporativo.
 
-# 
+---
 
-# ↓
+## Autor
 
-# 
+**Paulo Oliveira**
 
-# Consultas SQL
+**Data Solutions • Analytics • AI**
 
-# 
+GitHub:
+https://github.com/paulo-emilio
 
-# ↓
-
-# 
-
-# Apache Airflow
-
-# 
-
-# ↓
-
-# 
-
-# Silver (PostgreSQL)
-
-# 
-
-# ↓
-
-# 
-
-# Gold
-
-# 
-
-# ↓
-
-# 
-
-# DataMart (MySQL)
-
-# 
-
-# ↓
-
-# 
-
-# Power BI
-
-# 
-
-# \---
-
-# 
-
-# \# ⚙️ Pipeline de Dados
-
-# 
-
-# As transformações foram desenvolvidas utilizando consultas SQL complexas baseadas em CTEs.
-
-# 
-
-# O Apache Airflow era responsável por:
-
-# 
-
-# \- executar múltiplas DAGs;
-
-# \- atualizar as tabelas Silver;
-
-# \- consolidar as tabelas Gold;
-
-# \- alimentar automaticamente o DataMart;
-
-# \- manter a atualização recorrente dos dashboards.
-
-# 
-
-# A atualização ocorria automaticamente a cada duas horas.
-
-# 
-
-# <img src="imgs/automacao.png" width="100%">
-
-# 
-
-# \---
-
-# 
-
-# \# 👨‍💻 Minha Atuação
-
-# 
-
-# Fui responsável por toda a construção da solução analítica.
-
-# 
-
-# Principais atividades desenvolvidas:
-
-# 
-
-# \- entendimento das regras de licenciamento junto ao time BASIS;
-
-# \- levantamento dos requisitos;
-
-# \- desenvolvimento das consultas SQL;
-
-# \- modelagem das camadas Silver e Gold;
-
-# \- estruturação do DataMart;
-
-# \- desenvolvimento dos dashboards em Power BI;
-
-# \- validação dos indicadores;
-
-# \- publicação da solução.
-
-# 
-
-# \---
-
-# 
-
-# \# 📊 Dashboards Desenvolvidos
-
-# 
-
-# \## Visão Executiva
-
-# 
-
-# Dashboard responsável por apresentar uma visão consolidada dos custos de licenciamento do ERP.
-
-# 
-
-# Principais indicadores:
-
-# 
-
-# \- custo total das licenças;
-
-# \- usuários por categoria;
-
-# \- custos por área;
-
-# \- custos por perfil;
-
-# \- usuários ativos;
-
-# \- usuários inativos;
-
-# \- oportunidades de redução.
-
-# 
-
-# <img src="imgs/dashboard\_executivo.png" width="100%">
-
-# 
-
-# \---
-
-# 
-
-# \## Oportunidades de Redução
-
-# 
-
-# Dashboard desenvolvido para identificar quais usuários possuíam maior potencial de redução de custos.
-
-# 
-
-# A análise considerava:
-
-# 
-
-# \- funcionalidades utilizadas;
-
-# \- categoria da licença;
-
-# \- custo individual;
-
-# \- possibilidade de migração para licenças mais econômicas.
-
-# 
-
-# <img src="imgs/oportunidades.png" width="100%">
-
-# 
-
-# \---
-
-# 
-
-# \## Análise por Área
-
-# 
-
-# Painel utilizado para identificar quais departamentos concentravam maior custo com licenciamento.
-
-# 
-
-# Também permitia priorizar iniciativas de otimização por área de negócio.
-
-# 
-
-# <img src="imgs/areas.png" width="100%">
-
-# 
-
-# \---
-
-# 
-
-# \# 💰 Principal Insight
-
-# 
-
-# O projeto demonstrou que o maior custo nem sempre estava relacionado à quantidade de funcionalidades utilizadas.
-
-# 
-
-# Em muitos casos, uma única funcionalidade específica era suficiente para enquadrar um usuário em uma categoria de licença significativamente mais cara.
-
-# 
-
-# Essa visibilidade permitia identificar oportunidades de otimização muito mais precisas, direcionando os esforços para os usuários com maior potencial de redução de custos.
-
-# 
-
-# \---
-
-# 
-
-# \# 📦 Entregáveis
-
-# 
-
-# \- Plataforma analítica de licenciamento;
-
-# \- Arquitetura Silver → Gold;
-
-# \- DataMart para BI;
-
-# \- Dashboards executivos;
-
-# \- Dashboards analíticos;
-
-# \- Classificação automática das oportunidades de redução;
-
-# \- Indicadores estratégicos para gestão do licenciamento.
-
-# 
-
-# \---
-
-# 
-
-# \# 📈 Resultados
-
-# 
-
-# A solução passou a fornecer uma visão completa do licenciamento do ERP.
-
-# 
-
-# Entre os principais benefícios obtidos:
-
-# 
-
-# \- centralização das informações;
-
-# \- eliminação das análises manuais;
-
-# \- atualização automática dos dados;
-
-# \- identificação das maiores oportunidades de redução de custos;
-
-# \- priorização das iniciativas com maior retorno financeiro;
-
-# \- apoio à tomada de decisão baseada em dados.
-
-# 
-
-# \---
-
-# 
-
-# \# 🛠 Stack Tecnológica
-
-# 
-
-# \### Analytics
-
-# 
-
-# \- Power BI
-
-# \- DAX
-
-# \- Power Query
-
-# 
-
-# \### Engenharia de Dados
-
-# 
-
-# \- SQL
-
-# \- Apache Airflow
-
-# 
-
-# \### Banco de Dados
-
-# 
-
-# \- PostgreSQL
-
-# \- MySQL
-
-# 
-
-# \### Arquitetura
-
-# 
-
-# \- Silver Layer
-
-# \- Gold Layer
-
-# \- Data Lake
-
-# \- DataMart
-
-# 
-
-# \---
-
-# 
-
-# \# 📚 Principais Aprendizados
-
-# 
-
-# Mais do que construir dashboards, este projeto demonstrou como uma arquitetura de dados bem estruturada pode transformar informações operacionais em oportunidades reais de redução de custos.
-
-# 
-
-# O maior valor entregue não foi a visualização dos dados, mas a capacidade de direcionar decisões estratégicas sobre o licenciamento do ERP com base em evidências concretas.
-
-# 
-
-# \---
-
-# 
-
-# \# 🔒 Confidencialidade
-
-# 
-
-# Este estudo de caso foi adaptado para fins de portfólio.
-
-# 
-
-# Os dados apresentados são ilustrativos e algumas informações técnicas foram abstraídas para preservar a confidencialidade do ambiente original.
-
-# 
-
-# \---
-
-# 
-
-# \## 👤 Autor
-
-# 
-
-# \*\*Paulo Oliveira\*\*
-
-# 
-
-# \### Data Solutions • Analytics • AI
-
-# 
-
-# \- LinkedIn: https://www.linkedin.com/in/paulo-emilio
-
-# \- Portfólio: https://paulo-emilio.github.io
-
-# \- GitHub: https://github.com/paulo-emilio
-
+LinkedIn:
+https://linkedin.com/in/paulo-emilio-oliveira
