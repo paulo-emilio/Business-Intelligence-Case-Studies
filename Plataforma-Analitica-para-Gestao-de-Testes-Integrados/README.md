@@ -1,544 +1,310 @@
-# <p align="center">
+<div align="center">
 
-# 
+# Plataforma Analítica para Gestão de Testes Integrados SAP
 
-# \# Otimização de Custos de Licenciamento ERP
+### Automação, Inteligência de Negócio e Dashboards para acompanhamento de Testes Integrados utilizando SAP Cloud ALM, Python e Power BI.
 
-# 
+<img src="imgs/banner.png">
 
-# \### Enterprise Analytics Case Study
+</div>
 
-# 
+---
 
-# > Como uma plataforma analítica transformou dados de licenciamento em oportunidades de redução de custos.
+# Sobre o projeto
 
-# 
+Durante projetos de implantação do **SAP S/4HANA**, centenas de cenários de testes precisam ser executados diariamente por diversas áreas da empresa.
 
-# <img src="imgs/banner.png" width="100%">
+Embora o SAP Cloud ALM seja responsável pelo gerenciamento dos testes, acompanhar a evolução do projeto apenas pela ferramenta torna a tomada de decisão difícil, principalmente quando existem:
 
-# 
+- milhares de passos de teste;
+- dezenas de Key Users;
+- diversos módulos SAP;
+- dependências entre cenários;
+- defeitos abertos;
+- necessidade de acompanhamento executivo.
 
-# <br>
+Este projeto foi desenvolvido para transformar os dados operacionais do SAP Cloud ALM em uma plataforma analítica capaz de fornecer indicadores estratégicos, operacionais e gerenciais em tempo praticamente real.
 
-# 
+Toda a atualização ocorre automaticamente a cada **5 minutos**, permitindo que gestores, PMO e Key Users acompanhem o andamento do projeto através de dashboards específicos para cada perfil.
 
-# !\[Power BI](https://img.shields.io/badge/Power\_BI-F2C811?style=for-the-badge\&logo=powerbi\&logoColor=black)
+---
 
-# !\[SQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge)
+# Objetivos
 
-# !\[Apache Airflow](https://img.shields.io/badge/Apache\_Airflow-017CEE?style=for-the-badge\&logo=apacheairflow\&logoColor=white)
+- Automatizar a coleta de informações do SAP Cloud ALM;
+- Centralizar todos os dados em um modelo analítico;
+- Criar indicadores para gestão dos testes;
+- Identificar gargalos durante a execução;
+- Monitorar defeitos em tempo real;
+- Orientar os Key Users através do conceito de **Passo da Vez**;
+- Disponibilizar dashboards específicos para cada público.
 
-# !\[PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge\&logo=postgresql\&logoColor=white)
+---
 
-# !\[MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge\&logo=mysql\&logoColor=white)
+# Arquitetura da Solução
 
-# 
+<img src="imgs/arquitetura.png">
 
-# </p>
+A solução foi construída em cinco etapas principais:
 
-# 
+## Fonte de Dados
 
-# \---
+- SAP Cloud ALM
+- Casos de Teste
+- Test Steps
+- Test Plans
+- Defeitos
 
-# 
+---
 
-# \# 📌 Visão Geral
+## Automação
 
-# 
+Toda a integração foi automatizada utilizando Python.
 
-# Licenças de ERP representam um dos custos recorrentes mais relevantes da área de Tecnologia.
+Responsável por:
 
-# 
+- navegação automática;
+- exportação dos relatórios;
+- atualização programada;
+- execução a cada cinco minutos.
 
-# Apesar disso, muitas organizações possuem pouca visibilidade sobre quem realmente utiliza cada tipo de licença, quais funcionalidades justificam licenças premium e onde existem oportunidades reais de otimização.
+---
 
-# 
+## Camada Analítica
 
-# Neste projeto foi desenvolvida uma plataforma analítica capaz de consolidar dados de usuários, perfis, acessos e licenças do ERP, permitindo identificar oportunidades de redução de custos de forma objetiva e baseada em dados.
+Toda a inteligência do projeto foi implementada utilizando DAX.
 
-# 
+Principais regras de negócio:
 
-# <br>
+- Passo da Vez
+- Passo Concluído Previamente
+- Indicadores SPI
+- Produtividade
+- Tendência
+- Backlog de Defeitos
 
-# 
+---
 
-# <img src="imgs/visao\_geral\_dashboards.png" width="100%">
+## Visualização
 
-# 
+Toda a camada analítica foi disponibilizada através do Power BI.
 
-# \---
+Cada perfil possui um dashboard específico.
 
-# 
+---
 
-# \# 🎯 O Desafio
+# Tecnologias Utilizadas
 
-# 
+| Tecnologia | Finalidade |
+|------------|------------|
+| Power BI | Dashboards |
+| DAX | Regras de Negócio |
+| Python | Automação |
+| SAP Cloud ALM | Fonte de Dados |
+| Power Query | Tratamento |
+| Windows Task Scheduler | Execução Agendada |
+| Excel | Arquivos exportados |
 
-# As informações necessárias para análise estavam distribuídas entre diferentes tabelas do ERP.
+---
 
-# 
+# Dashboard Executivo
 
-# A identificação de oportunidades exigia consultas manuais e cruzamento de diversos conjuntos de dados, tornando praticamente inviável uma análise recorrente.
+<img src="imgs/painel-geral.png">
 
-# 
+Dashboard destinado à gestão do projeto.
 
-# Os principais desafios eram:
+Principais indicadores:
 
-# 
+- Percentual geral de execução;
+- Progresso por módulo SAP;
+- Evolução diária dos testes;
+- SPI dos passos;
+- Tendência do projeto;
+- Bloqueios;
+- Desvios;
+- Passos executados;
+- Passos com defeitos.
 
-# \- Baixa visibilidade sobre o uso das licenças;
+Permite acompanhar rapidamente a saúde geral do projeto.
 
-# \- Dados distribuídos em diversas tabelas;
+---
 
-# \- Ausência de uma visão consolidada;
+# Dashboard Key User
 
-# \- Dificuldade para identificar licenças superdimensionadas;
+<img src="imgs/painel-key-users.png">
 
-# \- Pouco conhecimento sobre quais funcionalidades elevavam o custo de cada usuário.
+Dashboard operacional desenvolvido para orientar a execução dos testes.
 
-# 
+O principal diferencial deste projeto foi a criação da lógica do **Passo da Vez**, permitindo que cada cenário indique exatamente qual deve ser o próximo passo a ser executado.
 
-# \---
+Status disponíveis:
 
-# 
+💚 Concluído
 
-# \# 💡 A Solução
+💙 Passo da Vez
 
-# 
+❤️ Defeito
 
-# Foi desenvolvida uma plataforma analítica composta por:
+🧡 Concluído Previamente
 
-# 
+💜 Planejado
 
-# \- consultas SQL utilizando CTEs;
+🔥 Não Relevante
 
-# \- pipelines de dados com Apache Airflow;
+O dashboard também permite:
 
-# \- arquitetura em camadas (Silver → Gold);
+- localizar cenários;
+- filtrar módulos;
+- acompanhar bloqueios;
+- identificar rapidamente onde existe atraso.
 
-# \- Data Lake em PostgreSQL;
+---
 
-# \- DataMart em MySQL;
+# Dashboard de Defeitos
 
-# \- dashboards executivos em Power BI.
+<img src="imgs/dash-defeitos.png">
 
-# 
+Responsável pelo acompanhamento de todos os defeitos registrados durante os testes.
 
-# A solução consolidou automaticamente todas as informações necessárias para análise de custos.
+Principais indicadores:
 
-# 
+- Defeitos por módulo;
+- Responsáveis;
+- Solicitantes;
+- Prioridade;
+- Tipo de defeito;
+- Defeitos mais antigos;
+- Status;
+- Total em aberto.
 
-# \---
+---
 
-# 
+# Dashboard de Passos por Turno
 
-# \# 🏗 Arquitetura da Solução
+<img src="imgs/dash-passos-turno.png">
 
-# 
+Dashboard utilizado para análise de produtividade das equipes.
 
-# <img src="imgs/arquitetura\_da\_solucao.png" width="100%">
+Indicadores:
 
-# 
+- Passos executados por turno;
+- Média de passos por hora;
+- Tempo de foco;
+- Horário de início;
+- Horário de término;
+- Testadores ativos;
+- Detalhamento de todas as execuções.
 
-# A arquitetura foi estruturada em múltiplas camadas para facilitar manutenção, escalabilidade e reutilização dos dados.
+---
 
-# 
+# Regra de Negócio — Passo da Vez
 
-# Fluxo da solução:
+Um dos principais desafios do projeto foi criar uma lógica que orientasse automaticamente os usuários sobre qual passo deveria ser executado.
 
-# 
+Toda essa regra foi construída utilizando DAX.
 
-# ERP
+<img src="imgs/fluxo-passo-da-vez.png">
 
-# 
+### Regras
 
-# ↓
+### Passo da Vez
 
-# 
+É o primeiro passo ainda não executado da sequência.
 
-# Consultas SQL
+---
 
-# 
+### Defeito
 
-# ↓
+Caso o Passo da Vez possua um defeito aberto, ele deixa de ser executável.
 
-# 
+Nenhum próximo passo é liberado até que o defeito seja resolvido.
 
-# Apache Airflow
+---
 
-# 
+### Defeito Resolvido
 
-# ↓
+Quando o defeito é encerrado, o mesmo passo volta automaticamente a ser o Passo da Vez.
 
-# 
+---
 
-# Silver (PostgreSQL)
+### Concluído Previamente
 
-# 
+Caso um usuário execute um passo posterior antes do Passo da Vez, este passo é identificado como **Concluído Previamente**.
 
-# ↓
+Dessa forma é possível identificar facilmente execuções fora da sequência planejada.
 
-# 
+---
 
-# Gold
+### Responsável
 
-# 
+O responsável pelo passo não interfere na lógica.
 
-# ↓
+Sua função é apenas indicar quem deverá executar determinada atividade.
 
-# 
+---
 
-# DataMart (MySQL)
+# Principais Funcionalidades
 
-# 
+- Atualização automática a cada 5 minutos;
+- Integração automática com SAP Cloud ALM;
+- Dashboards em tempo real;
+- Regras de negócio implementadas em DAX;
+- Indicadores executivos;
+- Indicadores operacionais;
+- Gestão de defeitos;
+- Produtividade por turno;
+- Navegação entre dashboards;
+- Filtros dinâmicos;
+- Exportação de dados;
+- Monitoramento do Passo da Vez.
 
-# ↓
+---
 
-# 
+# Resultados Obtidos
 
-# Power BI
+A solução permitiu:
 
-# 
+- centralizar informações do projeto;
+- reduzir o tempo gasto na consolidação manual dos relatórios;
+- aumentar a visibilidade da execução dos testes;
+- facilitar o acompanhamento dos Key Users;
+- acelerar a identificação de gargalos;
+- monitorar defeitos em tempo real;
+- melhorar o suporte às decisões do PMO e da gestão.
 
-# \---
+---
 
-# 
+# Aprendizados
 
-# \# ⚙️ Pipeline de Dados
+Durante o desenvolvimento deste projeto foram aplicados conhecimentos relacionados a:
 
-# 
+- Modelagem de Dados;
+- Power BI;
+- DAX;
+- Automação com Python;
+- Integração de Sistemas;
+- SAP Cloud ALM;
+- UX para Dashboards;
+- Business Intelligence;
+- Indicadores de Projetos;
+- Gestão de Testes Integrados.
 
-# As transformações foram desenvolvidas utilizando consultas SQL complexas baseadas em CTEs.
+---
 
-# 
+# Autor
 
-# O Apache Airflow era responsável por:
+**Paulo Emílio Oliveira**
 
-# 
+Analista de Dados | BI | Analytics
 
-# \- executar múltiplas DAGs;
+GitHub
 
-# \- atualizar as tabelas Silver;
+https://github.com/paulo-emilio
 
-# \- consolidar as tabelas Gold;
+LinkedIn
 
-# \- alimentar automaticamente o DataMart;
+https://linkedin.com/in/pauloemiliooliveira
 
-# \- manter a atualização recorrente dos dashboards.
+---
 
-# 
-
-# A atualização ocorria automaticamente a cada duas horas.
-
-# 
-
-# <img src="imgs/automacao.png" width="100%">
-
-# 
-
-# \---
-
-# 
-
-# \# 👨‍💻 Minha Atuação
-
-# 
-
-# Fui responsável por toda a construção da solução analítica.
-
-# 
-
-# Principais atividades desenvolvidas:
-
-# 
-
-# \- entendimento das regras de licenciamento junto ao time BASIS;
-
-# \- levantamento dos requisitos;
-
-# \- desenvolvimento das consultas SQL;
-
-# \- modelagem das camadas Silver e Gold;
-
-# \- estruturação do DataMart;
-
-# \- desenvolvimento dos dashboards em Power BI;
-
-# \- validação dos indicadores;
-
-# \- publicação da solução.
-
-# 
-
-# \---
-
-# 
-
-# \# 📊 Dashboards Desenvolvidos
-
-# 
-
-# \## Visão Executiva
-
-# 
-
-# Dashboard responsável por apresentar uma visão consolidada dos custos de licenciamento do ERP.
-
-# 
-
-# Principais indicadores:
-
-# 
-
-# \- custo total das licenças;
-
-# \- usuários por categoria;
-
-# \- custos por área;
-
-# \- custos por perfil;
-
-# \- usuários ativos;
-
-# \- usuários inativos;
-
-# \- oportunidades de redução.
-
-# 
-
-# <img src="imgs/dashboard\_executivo.png" width="100%">
-
-# 
-
-# \---
-
-# 
-
-# \## Oportunidades de Redução
-
-# 
-
-# Dashboard desenvolvido para identificar quais usuários possuíam maior potencial de redução de custos.
-
-# 
-
-# A análise considerava:
-
-# 
-
-# \- funcionalidades utilizadas;
-
-# \- categoria da licença;
-
-# \- custo individual;
-
-# \- possibilidade de migração para licenças mais econômicas.
-
-# 
-
-# <img src="imgs/oportunidades.png" width="100%">
-
-# 
-
-# \---
-
-# 
-
-# \## Análise por Área
-
-# 
-
-# Painel utilizado para identificar quais departamentos concentravam maior custo com licenciamento.
-
-# 
-
-# Também permitia priorizar iniciativas de otimização por área de negócio.
-
-# 
-
-# <img src="imgs/areas.png" width="100%">
-
-# 
-
-# \---
-
-# 
-
-# \# 💰 Principal Insight
-
-# 
-
-# O projeto demonstrou que o maior custo nem sempre estava relacionado à quantidade de funcionalidades utilizadas.
-
-# 
-
-# Em muitos casos, uma única funcionalidade específica era suficiente para enquadrar um usuário em uma categoria de licença significativamente mais cara.
-
-# 
-
-# Essa visibilidade permitia identificar oportunidades de otimização muito mais precisas, direcionando os esforços para os usuários com maior potencial de redução de custos.
-
-# 
-
-# \---
-
-# 
-
-# \# 📦 Entregáveis
-
-# 
-
-# \- Plataforma analítica de licenciamento;
-
-# \- Arquitetura Silver → Gold;
-
-# \- DataMart para BI;
-
-# \- Dashboards executivos;
-
-# \- Dashboards analíticos;
-
-# \- Classificação automática das oportunidades de redução;
-
-# \- Indicadores estratégicos para gestão do licenciamento.
-
-# 
-
-# \---
-
-# 
-
-# \# 📈 Resultados
-
-# 
-
-# A solução passou a fornecer uma visão completa do licenciamento do ERP.
-
-# 
-
-# Entre os principais benefícios obtidos:
-
-# 
-
-# \- centralização das informações;
-
-# \- eliminação das análises manuais;
-
-# \- atualização automática dos dados;
-
-# \- identificação das maiores oportunidades de redução de custos;
-
-# \- priorização das iniciativas com maior retorno financeiro;
-
-# \- apoio à tomada de decisão baseada em dados.
-
-# 
-
-# \---
-
-# 
-
-# \# 🛠 Stack Tecnológica
-
-# 
-
-# \### Analytics
-
-# 
-
-# \- Power BI
-
-# \- DAX
-
-# \- Power Query
-
-# 
-
-# \### Engenharia de Dados
-
-# 
-
-# \- SQL
-
-# \- Apache Airflow
-
-# 
-
-# \### Banco de Dados
-
-# 
-
-# \- PostgreSQL
-
-# \- MySQL
-
-# 
-
-# \### Arquitetura
-
-# 
-
-# \- Silver Layer
-
-# \- Gold Layer
-
-# \- Data Lake
-
-# \- DataMart
-
-# 
-
-# \---
-
-# 
-
-# \# 📚 Principais Aprendizados
-
-# 
-
-# Mais do que construir dashboards, este projeto demonstrou como uma arquitetura de dados bem estruturada pode transformar informações operacionais em oportunidades reais de redução de custos.
-
-# 
-
-# O maior valor entregue não foi a visualização dos dados, mas a capacidade de direcionar decisões estratégicas sobre o licenciamento do ERP com base em evidências concretas.
-
-# 
-
-# \---
-
-# 
-
-# \# 🔒 Confidencialidade
-
-# 
-
-# Este estudo de caso foi adaptado para fins de portfólio.
-
-# 
-
-# Os dados apresentados são ilustrativos e algumas informações técnicas foram abstraídas para preservar a confidencialidade do ambiente original.
-
-# 
-
-# \---
-
-# 
-
-# \## 👤 Autor
-
-# 
-
-# \*\*Paulo Oliveira\*\*
-
-# 
-
-# \### Data Solutions • Analytics • AI
-
-# 
-
-# \- LinkedIn: https://www.linkedin.com/in/paulo-emilio
-
-# \- Portfólio: https://paulo-emilio.github.io
-
-# \- GitHub: https://github.com/paulo-emilio
-
+Se este projeto foi útil para você, deixe uma ⭐ no repositório.
