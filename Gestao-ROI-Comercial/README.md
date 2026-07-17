@@ -1,214 +1,136 @@
-# Otimização de Custos de Licenciamento ERP
+<img src="imgs/banner.png">
 
-<p align="center">
-  <img src="imgs/banner.png" alt="Banner do Projeto">
-</p>
+# Plataforma Analítica para Gestão de ROI Comercial
 
 ## Visão Geral
 
-Este projeto apresenta uma solução analítica desenvolvida para identificar oportunidades de otimização de custos com licenciamento de um sistema ERP, transformando grandes volumes de dados operacionais em informações estratégicas para apoio à tomada de decisão.
+Empresas investem continuamente em plataformas comerciais, equipes de vendas e tecnologias para ampliar receitas e acelerar o crescimento do negócio. Entretanto, sem uma visão consolidada dos investimentos e dos resultados obtidos, torna-se difícil responder uma pergunta essencial para a tomada de decisão estratégica:
 
-A solução foi construída utilizando pipelines de dados, processamento automatizado e dashboards analíticos para permitir uma visão completa dos custos de licenciamento, identificar usuários com potencial de reclassificação e priorizar oportunidades de redução de despesas.
+> O investimento realizado está gerando o retorno esperado?
 
----
+Para responder essa necessidade, foi desenvolvida uma plataforma analítica baseada em Power BI, consolidando dados da operação comercial em indicadores executivos capazes de acompanhar receitas, investimentos, retorno sobre investimento (ROI) e projeções futuras.
 
-<p align="center">
-  <img src="imgs/visao-geral.png" alt="Visão Geral da Solução">
-</p>
+A solução transformou análises que anteriormente dependiam de planilhas e consolidações manuais em um painel executivo atualizado continuamente, permitindo uma visão centralizada da performance financeira da operação comercial.
 
 ---
 
-# O Desafio
+## Objetivos
 
-O ambiente possuía milhares de usuários distribuídos entre diversas áreas da empresa, cada um podendo possuir múltiplos perfis e diferentes níveis de acesso.
-
-O principal desafio era identificar, de forma escalável, quais usuários realmente necessitavam de licenças de maior custo e quais poderiam ser reclassificados sem impacto operacional.
-
-Antes da solução, essa análise era altamente manual, dificultando a identificação de oportunidades de economia e tornando o processo lento e sujeito a erros.
-
----
-
-# Arquitetura da Solução
-
-<p align="center">
-  <img src="imgs/arquitetura.png" alt="Arquitetura da Solução">
-</p>
-
-A arquitetura foi construída para transformar dados operacionais do ERP em informações analíticas consumidas pelo Power BI.
-
-O fluxo da solução contemplava:
-
-- Extração de dados relacionados a usuários, perfis, licenças e acessos;
-- Consultas SQL utilizando CTEs para consolidação e tratamento das informações;
-- Orquestração das cargas por meio do Apache Airflow;
-- Organização dos dados em camadas Silver e Gold;
-- Publicação em ambiente analítico para consumo pelo Power BI.
-
-Essa estrutura permitia atualizações recorrentes, padronização das informações e suporte às análises estratégicas.
+- Consolidar indicadores financeiros e comerciais em uma única plataforma.
+- Monitorar continuamente o ROI da operação.
+- Comparar investimentos e receitas ao longo do tempo.
+- Projetar resultados futuros utilizando modelos de tendência.
+- Apoiar decisões estratégicas da diretoria.
 
 ---
 
-# Dashboards
+## Arquitetura da Solução
 
-## Dashboard Executivo
+<img src="imgs/arquitetura.png">
 
-<p align="center">
-  <img src="imgs/dash-executivo.png" alt="Dashboard Executivo">
-</p>
+A arquitetura foi construída sobre uma plataforma moderna de dados, utilizando o Salesforce como origem das informações comerciais.
 
-O dashboard executivo consolidava os principais indicadores relacionados aos custos de licenciamento, permitindo uma visão geral do cenário da organização.
+Após a ingestão e armazenamento no Data Lake, os dados eram tratados e organizados na camada analítica por meio de processos automatizados, disponibilizando um Data Mart otimizado para consumo no Power BI.
 
-Principais análises:
-
-- custo total de licenciamento;
-- distribuição das licenças;
-- custos por área;
-- evolução dos gastos;
-- usuários com maior impacto financeiro;
-- potencial estimado de economia.
+Minha atuação concentrou-se na camada analítica da solução, realizando consultas SQL, preparação dos dados para o Data Mart e desenvolvimento dos dashboards executivos em Power BI.
 
 ---
 
-## Dashboard de Oportunidades
+## Tecnologias Utilizadas
 
-<p align="center">
-  <img src="imgs/dash-oportunidades.png" alt="Dashboard de Oportunidades">
-</p>
-
-Após identificar as áreas com maior concentração de custos, a solução priorizava automaticamente as melhores oportunidades de redução.
-
-A análise combinava fatores como:
-
-- impacto financeiro;
-- facilidade de implementação;
-- quantidade de funcionalidades utilizadas;
-- quantidade de funcionalidades críticas;
-- potencial de economia.
-
-Essa abordagem permitia priorizar ações de maior retorno com menor esforço operacional.
+| Tecnologia | Finalidade |
+|------------|------------|
+| Power BI | Dashboards executivos |
+| SQL | Consultas e preparação analítica |
+| Python | Processamento de dados |
+| Apache Airflow | Orquestração dos pipelines |
+| Salesforce B2B | Origem dos dados comerciais |
+| Data Lake | Armazenamento dos dados |
+| Data Mart | Camada analítica |
 
 ---
 
-## Dashboard de Perfis e Transações
+# Dashboard Executivo
 
-<p align="center">
-  <img src="imgs/dash-analise-licencas.png" alt="Dashboard de Perfis e Transações">
-</p>
+<img src="imgs/gestao-roi-comercial.png">
 
-Este dashboard permitia navegar do nível mais alto da análise até o detalhe das transações responsáveis pelo enquadramento de cada licença.
+A página principal foi desenvolvida para fornecer uma visão executiva da operação comercial, permitindo que gestores acompanhassem rapidamente os principais indicadores financeiros responsáveis por medir o retorno dos investimentos realizados.
 
-Fluxo analítico:
+Entre os principais indicadores apresentados estavam:
 
-Área
+- Receita Total
+- Investimento Total
+- ROI Atual
+- Receita Projetada
+- ROI Projetado
+- Receita por Licença
+- Custo Médio por Licença
 
-↓
-
-Usuário
-
-↓
-
-Perfil (Role)
-
-↓
-
-Transações
-
-↓
-
-Nível da Licença
-
-↓
-
-Oportunidade de Redução
-
-Essa visão facilitava a identificação de casos onde poucas transações elevavam o custo da licença, possibilitando revisões mais precisas e fundamentadas.
+Além dos KPIs, o painel apresentava gráficos de tendência que permitiam comparar a evolução das receitas, investimentos e o comportamento esperado da operação nos meses seguintes através de modelos de Forecast.
 
 ---
 
-# Tecnologias Utilizadas
+# Dashboard Analítico
 
-### Business Intelligence
+<img src="imgs/detalhamento.png">
 
-- Power BI
+Enquanto o painel executivo respondia rapidamente ao desempenho geral da operação, esta página permitia aprofundar a análise dos resultados.
 
-### Engenharia de Dados
+Os indicadores podiam ser explorados através de diversos filtros, possibilitando identificar quais áreas concentravam maiores investimentos, quais produtos apresentavam melhor retorno financeiro e como o ROI se comportava em diferentes segmentos da operação.
 
-- SQL
-- Apache Airflow
-
-### Modelagem de Dados
-
-- Camadas Silver
-- Camadas Gold
-- Data Lake
-- Data Warehouse
-- Data Mart
-
-### Bancos de Dados
-
-- PostgreSQL
-- MySQL
-
-### Conceitos Aplicados
-
-- ETL
-- ELT
-- Data Warehouse
-- Governança de Dados
-- Data Analytics
-- Modelagem Dimensional
-- Análise de Custos
-- Business Intelligence
+A tabela analítica consolidava todas essas informações em uma única visão, facilitando análises detalhadas durante reuniões executivas.
 
 ---
 
-# Resultados
+## Principais Indicadores
 
-A solução proporcionou uma visão centralizada do ambiente de licenciamento, permitindo identificar oportunidades de otimização que antes demandavam análises manuais.
-
-Entre os principais ganhos obtidos destacam-se:
-
-- centralização das informações de licenciamento;
-- atualização automatizada dos dados;
-- identificação de usuários com potencial de reclassificação;
-- priorização das melhores oportunidades de economia;
-- maior suporte às decisões relacionadas à gestão de licenças;
-- fortalecimento da governança sobre acessos e custos.
-
----
-
-# Principais Aprendizados
-
-Durante o desenvolvimento deste projeto foi possível aprofundar conhecimentos em:
-
-- arquitetura analítica para Business Intelligence;
-- construção de consultas SQL complexas utilizando CTEs;
-- modelagem de dados para ambientes analíticos;
-- orquestração de pipelines com Apache Airflow;
-- criação de dashboards executivos focados em tomada de decisão;
-- análise de custos baseada em dados;
-- comunicação de insights para áreas de negócio.
+- ROI Comercial
+- Receita Total
+- Investimento Total
+- Receita Projetada
+- Forecast Financeiro
+- Receita por Produto
+- Receita por Unidade de Negócio
+- Investimento por Região
+- Receita por Licença
+- Custos por Licença
+- Evolução do ROI
 
 ---
 
-# Confidencialidade
+## Resultados Obtidos
 
-Este case foi adaptado para fins de portfólio.
+A implantação da plataforma proporcionou diversos ganhos para a gestão comercial:
 
-Todas as informações sensíveis foram anonimizadas, incluindo nomes de usuários, áreas, estruturas organizacionais, valores específicos e demais dados confidenciais.
+- Eliminação de controles paralelos em planilhas.
+- Centralização dos indicadores estratégicos em um único ambiente.
+- Redução do tempo necessário para análises financeiras.
+- Acompanhamento contínuo do retorno sobre investimentos.
+- Maior confiabilidade das informações utilizadas pela diretoria.
+- Apoio à tomada de decisão baseada em dados.
 
-O objetivo deste projeto é demonstrar a arquitetura da solução, a abordagem analítica utilizada e as técnicas aplicadas durante seu desenvolvimento, preservando integralmente a confidencialidade do ambiente corporativo.
+---
+
+## Aprendizados
+
+Este projeto reforçou a importância da construção de indicadores orientados ao negócio.
+
+Mais do que desenvolver dashboards, o principal desafio foi traduzir informações comerciais em métricas capazes de apoiar decisões estratégicas relacionadas a investimentos, crescimento e rentabilidade.
+
+Também permitiu aprofundar conhecimentos em modelagem analítica, visualização de dados executivos, integração de informações provenientes do Salesforce e construção de indicadores financeiros voltados para acompanhamento de ROI.
+
+---
+
+## Confidencialidade
+
+Os dados apresentados neste repositório possuem finalidade exclusivamente demonstrativa.
+
+Todas as informações exibidas foram anonimizadas, adaptadas ou recriadas para preservar a confidencialidade da organização e de seus processos internos, mantendo apenas a estrutura técnica e analítica da solução originalmente desenvolvida.
 
 ---
 
 ## Autor
 
-**Paulo Oliveira**
+**Paulo Emílio Oliveira**
 
-**Data Solutions • Analytics • AI**
-
-GitHub:
-https://github.com/paulo-emilio
-
-LinkedIn:
-https://linkedin.com/in/paulo-emilio-oliveira
+Analista de Dados | Business Intelligence | Power BI | SQL | Python
