@@ -19,6 +19,12 @@
 
 ---
 
+## 🏆 Resultado
+
+> Deu à área de TI indicadores de MTTA, MTTR e backlog atualizados automaticamente a partir do Jira, no lugar de levantamentos manuais em planilhas.
+
+---
+
 # 📌 Visão Geral
 
 Com o crescimento da área de TI, o volume de chamados registrados no Jira aumentava significativamente, mas a gestão tinha pouca visibilidade sobre o desempenho operacional da equipe — tempo médio de atendimento, volume por equipe e principais gargalos.

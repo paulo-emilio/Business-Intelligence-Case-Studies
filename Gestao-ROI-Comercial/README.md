@@ -2,6 +2,12 @@
 
 # Plataforma Analítica para Gestão de ROI Comercial
 
+## 🏆 Resultado
+
+> Transformou dados comerciais do Salesforce em uma visão única de ROI, receita e margem, reduzindo a dependência de planilhas manuais na área comercial.
+
+---
+
 ## Visão Geral
 
 Empresas investem continuamente em plataformas comerciais, equipes de vendas e tecnologias para ampliar receitas e acelerar o crescimento do negócio. Entretanto, sem uma visão consolidada dos investimentos e dos resultados obtidos, torna-se difícil responder uma pergunta essencial para a tomada de decisão estratégica:

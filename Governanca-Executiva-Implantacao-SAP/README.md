@@ -19,6 +19,12 @@
 
 ---
 
+## 🏆 Resultado
+
+> Consolidou o cronograma de uma implantação SAP em dashboards executivos únicos, eliminando a montagem manual de relatórios a partir do Microsoft Project.
+
+---
+
 # 📌 Visão Geral
 
 Implantações SAP envolvem centenas de atividades, múltiplas equipes, fornecedores, cronogramas complexos e um grande volume de informações distribuídas entre diferentes ferramentas.

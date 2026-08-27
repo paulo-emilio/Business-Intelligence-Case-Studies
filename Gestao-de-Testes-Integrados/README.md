@@ -10,6 +10,12 @@
 
 ---
 
+## 🏆 Resultado
+
+> Substituiu consolidações manuais no SAP Cloud ALM por uma visão diária do andamento dos testes, defeitos críticos e produtividade por Key User, com atualização automática a cada 5 minutos.
+
+---
+
 # Sobre o projeto
 
 Durante projetos de implantação do **SAP S/4HANA**, centenas de cenários de testes precisam ser executados diariamente por diversas áreas da empresa.

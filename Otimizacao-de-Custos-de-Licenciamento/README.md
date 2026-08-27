@@ -4,6 +4,12 @@
   <img src="imgs/banner.png" alt="Banner do Projeto">
 </p>
 
+## 🏆 Resultado
+
+> Trouxe visibilidade sobre o uso real das licenças SAP — usuários inativos e perfis incompatíveis — antes invisíveis em consultas manuais ao ERP.
+
+---
+
 ## Visão Geral
 
 Este projeto apresenta uma solução analítica desenvolvida para identificar oportunidades de otimização de custos com licenciamento de um sistema ERP, transformando grandes volumes de dados operacionais em informações estratégicas para apoio à tomada de decisão.

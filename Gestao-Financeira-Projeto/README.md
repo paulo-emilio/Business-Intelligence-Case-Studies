@@ -19,6 +19,12 @@
 
 ---
 
+## 🏆 Resultado
+
+> Substituiu o controle financeiro em planilhas por dashboards executivos de orçamento, forecast e gastos por fornecedor, atualizados com poucos cliques.
+
+---
+
 # 📌 Visão Geral
 
 A implantação do SAP S/4HANA envolvia consultorias, fornecedores, treinamentos, viagens, infraestrutura e licenciamento — um controle financeiro robusto, porém mantido principalmente em planilhas Excel pelo PMO e pela equipe financeira, o que dificultava o acompanhamento gerencial da execução orçamentária.
